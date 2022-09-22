@@ -11,7 +11,7 @@ class Producer {
         const connection = await amqp.connect(url)
 
         // create channel
-        this.channel = connection.createChannel();
+        this.channel = await connection.createChannel();
     }
 
     // create msg publisher function
