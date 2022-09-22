@@ -1,0 +1,22 @@
+{
+  "name": "msg-queuing-microservices",
+  "version": "1.0.0",
+  "description": "A microservices for demonstrating message queuing with RabbitMQ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Timothy-py/Bulk-Email-Sender-Microservice.git"
+  },
+  "author": "Timothy-py",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Timothy-py/Bulk-Email-Sender-Microservice/issues"
+  },
+  "homepage": "https://github.com/Timothy-py/Bulk-Email-Sender-Microservice#readme",
+  "dependencies": {
+    "amqplib": "^0.10.3"
+  }
+}
