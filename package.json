@@ -1,0 +1,27 @@
+{
+  "name": "bulk-email-sender-microservice",
+  "version": "1.0.0",
+  "description": "A microservice for sending bulk emails using rabbitmq and nodemailer",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Timothy-py/Bulk-Email-Sender-Microservice.git"
+  },
+  "keywords": [
+    "microservice"
+  ],
+  "author": "Timothy-py",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Timothy-py/Bulk-Email-Sender-Microservice/issues"
+  },
+  "homepage": "https://github.com/Timothy-py/Bulk-Email-Sender-Microservice#readme",
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "nodemailer": "^6.7.8",
+    "smtp-server": "^3.11.0"
+  }
+}
