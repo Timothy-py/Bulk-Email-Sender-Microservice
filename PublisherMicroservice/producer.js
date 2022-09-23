@@ -25,7 +25,7 @@ class Producer {
         await this.channel.assertExchange(exchangeName, 'direct')
 
         const msgDetails = {
-            msgType: routingKey,
+            logType: routingKey,
             message: message,
             timestamp: new Date()
         }
@@ -37,7 +37,7 @@ class Producer {
             Buffer.from(JSON.stringify(msgDetails))
         )
 
-        console.log(`The message ${message} has been sent to exchange ${exchangeName}`)
+        console.log(`The message ${message} has been sent to exchange ${routingKey}`)
     }
 }
 
