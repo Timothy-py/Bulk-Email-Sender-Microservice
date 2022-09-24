@@ -43,7 +43,7 @@ amqplib.connect(config.amqp, (err, connection) => {
             // push 100 messages to queue
             let sent = 0;
             let sendNext = () => {
-                if(sent >= 100 ) {
+                if(sent >= 10 ) {
                     console.log('All messages sent!')
                     // close connection to AMQP server
                     return channel.close(() => connection.close())
