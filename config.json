@@ -1,6 +1,5 @@
 {
     "amqp": "amqp://localhost",
-    "queue": "mailer",
 
     "server": {
         "port": 12345,
