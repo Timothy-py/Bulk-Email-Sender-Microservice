@@ -18,7 +18,7 @@ amqplib.connect(config.amqp, (err, connection) => {
         // create queue for messages
         channel.assertQueue('mailer', {
             // ensure queue is not deleted when server restarts
-            duragle: true
+            durable: true
         }, err => {
             if(err){
                 console.error(err.stack)
