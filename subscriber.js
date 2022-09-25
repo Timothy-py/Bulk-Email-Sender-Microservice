@@ -4,14 +4,7 @@ const config = require('./config')
 
 // setup nodemailer transport
 const transport = nodemailer.createTransport({
-    host: config.server.host,
-    port: config.server.port, 
-
-    disableFileAccess: true,
-    disableUrlAccess: true
-}, {
-    // default options for message
-    from: 'sender@email.com'
+    
 });
 
 // create connection to AMQP server
@@ -39,7 +32,7 @@ amqplib.connect(config.amqp, (err, connection)=>{
 
             // Only request 1 unacked message from queue
             // This value represents the number of messages to process in parallel
-            channel.prefetch(5);
+            channel.prefetch(1);
 
             // callback to handle messages received from the queue
             channel.consume('mailer', data => {
@@ -49,25 +42,25 @@ amqplib.connect(config.amqp, (err, connection)=>{
                 }
 
                 // decode message contents
-                let message = JSON.parse(data.content.toString())
+                const message = JSON.parse(data.content.toString())
+                const{to, subject, text} = message
 
-                // attach message specific authentication options
-                // this is needed if you want to send different messages from
-                // different user accounts
-                message.auth = {
-                    user: 'testuser',
-                    pass: 'testpass'
-                };
+                let mailOptions = {
+                    from: 'Aradugbo Admin <admin.aradugbo@efficion.org>',
+                    to: to,
+                    subject: subject,
+                    text: text
+                  };
 
-                // send the message
-                transport.sendMail(message, (err, info)=>{
+                // // send the message
+                transport.sendMail(mailOptions, (err, info)=>{
                     if(err){
                         console.error(err.stack)
                         // put the failed message item back to queue
                         return channel.nack(data)
                     }
 
-                    console.log(`Delivered message ${info.messageId}`)
+                    console.log(`Message delivered ${info.messageId}`)
                     // remove message item from the queue
                     channel.ack(data);
                 })
